@@ -1,11 +1,35 @@
 function Login() {
+  const submitHandler = e => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const regexEmail =
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+    if (email === '' || password === '') {
+      console.log('Los campos no pueden estar vacíos');
+      return;
+    }
+
+    if (email !== '' && !regexEmail.test(email)) {
+      console.log('Debes escribir una dirección de correo válida');
+      return;
+    }
+
+    if (email !== 'challenge@alkemy.org' || password !== 'react') {
+      console.log('Credenciales incorrectas');
+      return;
+    }
+
+    console.log('Credenciales correctas');
+  };
   return (
     <>
       <h1>Login form</h1>
-      <form>
+      <form onSubmit={submitHandler}>
         <label>
           <span>Email:</span> <br />
-          <input type="email" name="email" placeholder="Username" />
+          <input type="text" name="email" placeholder="Username" />
         </label>
         <br />
         <label>
