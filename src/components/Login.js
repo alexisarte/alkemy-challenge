@@ -29,7 +29,8 @@ function Login() {
       .post('http://challenge-react.alkemy.org', { email, password })
       .then(res => {
         swAlert(<h2>Perfect, you are in</h2>);
-        console.log(res.data);
+        // const tokenRecibido = res.data.token;
+        // localStorage.setItem('token', tokenRecibido);
       });
   };
   return (
